@@ -4,8 +4,8 @@ info:
   version: "1.0"
   description: A sample API to illustrate OPENAPI concepts
 servers:
-  # - url: https://api.server.test/v1
-  - url: https://example.io/v1
+  - url: https://api.server.test/v1
+  # - url: https://example.io/v1
 # Basic authentication
 components:
   securitySchemes:
@@ -126,4 +126,30 @@ paths:
                 properties:
                   message:
                     type: string
-  #  ---- /Added lines  ----------------------------------------x
+  #  ----- Added lines  ----------------------------------------
+  parameters:
+    PageLimit:
+      name: limit
+      in: query
+      description: Limits the number of items on a page
+      schema:
+        type: integer
+      
+    PageOffset:
+      name: offset
+      in: query
+      description: Specifies the page number of the artists to be displayed
+      schema:
+        type: integer
+
+  responses:
+    400Error:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            type: object 
+            properties:
+              message:
+                type: string
+  #  ---- /Added lines  ----------------------------------------
